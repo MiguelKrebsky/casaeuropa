@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@300;400&display=swap" rel="stylesheet">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Para Você ❤️</title>
+
+<style>
+
+body{
+    margin:0;
+    font-family:'Parisienne', sans-serif;
+    background:linear-gradient(135deg,#ffd1dc,#fff0f5);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    min-height:100vh;
+    overflow-x:hidden;
+    h1{
+    font-family:'Dancing Script', cursive;
+    font-size:48px;
+    color:#d10050;
+    }
+}
+
+.container{
+    text-align:center;
+    padding:20px;
+}
+
+#carta{
+    display:none;
+    background:white;
+    max-width:700px;
+    padding:30px;
+    border-radius:20px;
+    box-shadow:0 0 20px rgba(0,0,0,0.2);
+}
+
+button{
+    padding:12px 25px;
+    border:none;
+    border-radius:10px;
+    cursor:pointer;
+    font-size:18px;
+}
+
+.foto{
+    width:200px;
+    border-radius:15px;
+    margin:10px;
+}
+
+#galeria{
+    margin-top:20px;
+}
+
+#contador{
+    margin-top:20px;
+    font-size:22px;
+    color:#d10050;
+    font-weight:bold;
+}
+
+.coracao{
+    position:fixed;
+    font-size:24px;
+    animation:subir 4s linear forwards;
+}
+
+@keyframes subir{
+    from{
+        transform:translateY(0);
+        opacity:1;
+    }
+    to{
+        transform:translateY(-800px);
+        opacity:0;
+    }
+}
+
+</style>
+</head>
+<body>
+
+<audio id="musica" loop>
+    <source src="musica.mp3" type="audio/mpeg">
+</audio>
+
+<div class="container">
+
+    <div id="inicio">
+        <h1>📩 Você recebeu uma carta</h1>
+        <p>Clique para abrir</p>
+
+        <button onclick="abrirCarta()">
+            Abrir Carta ❤️
+        </button>
+    </div>
+
+    <div id="carta">
+
+        <h1>Para o amor da minha vida (Bolhinha) ❤️</h1>
+
+        <p>
+            Oi benzinha,
+        </p>
+
+        <p>
+            Fiz essa pequena surpresa porque queria te lembrar
+            o quanto você é especial para mim!
+        </p>
+
+        <p>
+            Obrigado por todos os momentos, pelas conversas,
+            pelas risadas e por estar ao meu lado.
+        </p>
+
+        <p>
+            <strong> <h3>você torna meus dias melhores.</h3></strong>
+        </p>
+
+        <p>
+            Você é a pessoa mais perfeita e incrivel que eu ja tive o prazer de conheçer, morro e mato por você meu bem, você é linda, eu te amo demais e quero passar o resto da eternidade ao seu lado, porque sem você, eu sou um nada, um vazio, eu preciso de você na minha vida, penso todos os dias, todas as horas, todos os minutos e segundo em você, saiba que voce é o meu porto seguro, a pessoa que eu tenho que posso chamar de amiga, namorada, futura noiva, futura esposa e futura mãe dos meus filho(s).
+        </p>
+
+        <p>
+            Eu te amo MUITO. pode contar comigo para tudo, pode falar sobre o que voce quiser comigo, e desculpa por tudo o que eu ja te fiz passar, eu realmente te quero para todo o sempre, em vida e fora dela ❤️
+        </p>
+
+        <div id="contador"></div>
+
+        <div id="galeria">
+
+            <img src="foto1.jpg" class="foto">
+            <img src="foto2.jpg" class="foto">
+            <img src="foto3.jpg" class="foto">
+            <img src="foto4.jpg" class="foto">
+            <img src="foto5.jpg" class="foto">
+            <img src="foto6.jpg" class="foto">
+
+
+        </div>
+
+        <br>
+
+        <button onclick="chuvaCoracoes()">
+            <sotrong><h3>Eu te amo ❤️</h3></sotrong>
+        </button>
+
+    </div>
+
+</div>
+
+<script>
+
+function abrirCarta(){
+
+    document.getElementById("inicio").style.display = "none";
+    document.getElementById("carta").style.display = "block";
+
+    document.getElementById("musica").play();
+
+    atualizarContador();
+}
+
+function atualizarContador(){
+
+    const inicioNamoro = new Date("2021-02-17");
+
+    const hoje = new Date();
+
+    const diferenca =
+        Math.floor(
+            (hoje - inicioNamoro) /
+            (1000*60*60*24)
+        );
+
+    document.getElementById("contador").innerHTML =
+        "Estamos juntos há " + diferenca + " dias ❤️";
+}
+
+function chuvaCoracoes(){
+
+    for(let i=0;i<40;i++){
+
+        const coracao =
+            document.createElement("div");
+
+        coracao.className = "coracao";
+
+        coracao.innerHTML = "❤️";
+
+        coracao.style.left =
+            Math.random()*100 + "vw";
+
+        coracao.style.bottom = "0px";
+
+        document.body.appendChild(coracao);
+
+        setTimeout(()=>{
+            coracao.remove();
+        },4000);
+    }
+}
+
+</script>
+
+</body>
+</html>
