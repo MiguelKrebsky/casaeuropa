@@ -3,7 +3,7 @@
 <head>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@300;400&family=Parisienne&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@300;400&display=swap" rel="stylesheet">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -13,7 +13,8 @@
 
 body{
     margin:0;
-    font-family:'Dancing Script', cursive;
+    font-family:'Poppins', sans-serif;
+    font-style:italic;
     background:linear-gradient(135deg,#ffd1dc,#fff0f5);
     display:flex;
     justify-content:center;
@@ -40,7 +41,7 @@ h1{
     padding:30px;
     border-radius:20px;
     box-shadow:0 0 20px rgba(0,0,0,0.2);
-    font-size:22px;
+    font-size:19px;
 }
 
 button{
@@ -69,21 +70,35 @@ button{
     font-weight:bold;
 }
 
-.coracao{
+.coracao-grande{
     position:fixed;
-    font-size:24px;
-    animation:subir 4s linear forwards;
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%) scale(0);
+    font-size:400px;
+    z-index:1000;
+    pointer-events:none;
+    animation:crescer 3s ease-out forwards;
 }
 
-@keyframes subir{
-    from{
-        transform:translateY(0);
-        opacity:1;
-    }
-    to{
-        transform:translateY(-800px);
-        opacity:0;
-    }
+@keyframes crescer{
+    0%{transform:translate(-50%,-50%) scale(0)}
+    30%{transform:translate(-50%,-50%) scale(1.2)}
+    50%{transform:translate(-50%,-50%) scale(1)}
+    100%{transform:translate(-50%,-50%) scale(1)}
+}
+
+.coracao-explosao{
+    position:fixed;
+    font-size:44px;
+    pointer-events:none;
+    z-index:1000;
+    animation:explodir 0.8s ease-out forwards;
+}
+
+@keyframes explodir{
+    0%{opacity:1; transform:translate(0,0) scale(1)}
+    100%{opacity:0; transform:translate(var(--dx),var(--dy)) scale(0)}
 }
 
 </style>
@@ -128,11 +143,15 @@ button{
         </p>
 
         <p>
-            Você é a pessoa mais perfeita e incrivel que eu ja tive o prazer de conheçer, morro e mato por você meu bem, você é linda, eu te amo demais e quero passar o resto da eternidade ao seu lado, porque sem você, eu sou um nada, um vazio, eu preciso de você na minha vida, penso todos os dias, todas as horas, todos os minutos e segundo em você, saiba que voce é o meu porto seguro, a pessoa que eu tenho que posso chamar de amiga, namorada, futura noiva, futura esposa e futura mãe dos meus filho(s).
+            Você é a pessoa mais perfeita e incrível que eu já tive o prazer de conhecer. Você é linda, eu te amo demais e quero passar o resto da eternidade ao seu lado, porque sem você eu sou um vazio.
         </p>
 
         <p>
-            Eu te amo MUITO. pode contar comigo para tudo, pode falar sobre o que voce quiser comigo, e desculpa por tudo o que eu ja te fiz passar, eu realmente te quero para todo o sempre, em vida e fora dela ❤️
+            Penso todos os dias, todas as horas, todos os minutos e segundos em você. Saiba que você é o meu porto seguro, a pessoa que eu posso chamar de amiga, namorada, futura noiva, futura esposa e futura mãe dos meus filhos.
+        </p>
+
+        <p>
+            Eu te amo MUITO. Pode contar comigo para tudo, pode falar sobre o que você quiser comigo. E me desculpa por tudo o que eu já te fiz passar. Eu realmente te quero para todo o sempre, em vida e fora dela ❤️
         </p>
 
         <div id="contador"></div>
@@ -189,26 +208,26 @@ function atualizarContador(){
 
 function chuvaCoracoes(){
 
-    for(let i=0;i<40;i++){
+    const grande = document.createElement("div");
+    grande.className = "coracao-grande";
+    grande.innerHTML = "❤️";
+    document.body.appendChild(grande);
 
-        const coracao =
-            document.createElement("div");
+    setTimeout(()=>{
+        grande.remove();
 
-        coracao.className = "coracao";
-
-        coracao.innerHTML = "❤️";
-
-        coracao.style.left =
-            Math.random()*100 + "vw";
-
-        coracao.style.bottom = "0px";
-
-        document.body.appendChild(coracao);
-
-        setTimeout(()=>{
-            coracao.remove();
-        },4000);
-    }
+        for(let i=0;i<40;i++){
+            const pequeno = document.createElement("div");
+            pequeno.className = "coracao-explosao";
+            pequeno.innerHTML = "❤️";
+            pequeno.style.setProperty("--dx", (Math.random()-0.5)*600+"px");
+            pequeno.style.setProperty("--dy", (Math.random()-0.5)*600+"px");
+            pequeno.style.left = "50%";
+            pequeno.style.top = "50%";
+            document.body.appendChild(pequeno);
+            setTimeout(()=> pequeno.remove(), 800);
+        }
+    }, 3000);
 }
 
 </script>
