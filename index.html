@@ -101,51 +101,6 @@ button{
     100%{opacity:0; transform:translate(var(--dx),var(--dy)) scale(0)}
 }
 
-#slideshow-page{
-    display:none;
-    position:fixed;
-    top:0; left:0;
-    width:100vw;
-    height:100vh;
-    background:black;
-    z-index:2000;
-    text-align:center;
-}
-
-#slideshow-page img{
-    max-width:100%;
-    max-height:100vh;
-    object-fit:contain;
-}
-
-#slideshow-page .close{
-    position:absolute;
-    top:20px;
-    right:20px;
-    color:white;
-    font-size:30px;
-    cursor:pointer;
-    background:none;
-    border:none;
-    z-index:2001;
-}
-
-#slideshow-page .prev,
-#slideshow-page .next{
-    position:absolute;
-    top:50%;
-    transform:translateY(-50%);
-    color:white;
-    font-size:50px;
-    cursor:pointer;
-    background:none;
-    border:none;
-    padding:20px;
-    z-index:2001;
-}
-
-#slideshow-page .prev{ left:10px; }
-#slideshow-page .next{ right:10px; }
 </style>
 </head>
 <body>
@@ -188,23 +143,11 @@ button{
         </p>
 
         <p>
-            Lembro até hoje da nossa primeira conversa no clube, no campão. Você estava tão tímida, com aquele sorriso envergonhado que me conquistou de primeira. Eu já sabia ali que queria te conhecer mais, que você era especial.
-        </p>
-
-        <p>
-            Você é a pessoa mais perfeita e incrível que eu já tive o prazer de conhecer. Você é linda, eu te amo demais e quero passar o resto da eternidade ao seu lado, porque sem você eu sou um vazio.
+            Você é a pessoa mais perfeita e incrível que eu já tive o prazer de conhecer, vivo e morro por você meu amor. Você é linda, eu te amo demais e quero passar o resto da eternidade ao seu lado, porque sem você eu sou um vazio.
         </p>
 
         <p>
             Penso todos os dias, todas as horas, todos os minutos e segundos em você. Saiba que você é o meu porto seguro, a pessoa que eu posso chamar de amiga, namorada, futura noiva, futura esposa e futura mãe dos meus filhos.
-        </p>
-
-        <p>
-            E saiba de uma coisa: você é perfeita exatamente do jeito que é. Não mude nada, porque cada detalhe seu — seu sorriso, seu jeito, suas manias — é o que me faz te amar ainda mais.
-        </p>
-
-        <p>
-            Mal posso esperar pelo nosso futuro juntos na Europa, numa casa linda com nossos doguinhos, vivendo a vida que a gente sempre sonhou. Você, eu, eles e muito amor. É isso que me motiva todos os dias.
         </p>
 
         <p>
@@ -227,31 +170,12 @@ button{
 
         <br>
 
-        <p>
-            <em>P.S. — Cada linha de código feita aqui foi com muito amor e muito choro, mas com muito carinho, porque tudo que faço por você vale mais que tudo nesse mundo ❤️</em>
-        </p>
-
-        <br>
-
         <button onclick="chuvaCoracoes()">
             <strong>Eu te amo ❤️</strong>
         </button>
 
-        <br><br>
-
-        <button onclick="abrirSlideshow()">
-            📸 Nossas Fotos
-        </button>
-
     </div>
 
-</div>
-
-<div id="slideshow-page">
-    <button class="close" onclick="fecharSlideshow()">✕</button>
-    <button class="prev" onclick="mudarFoto(-1)">‹</button>
-    <button class="next" onclick="mudarFoto(1)">›</button>
-    <img id="slideshow-img" src="foto1.jpg">
 </div>
 
 <script>
@@ -280,26 +204,6 @@ function atualizarContador(){
 
     document.getElementById("contador").innerHTML =
         "Estamos juntos há " + diferenca + " dias ❤️";
-}
-
-var fotoAtual = 1;
-var totalFotos = 14;
-
-function abrirSlideshow(){
-    document.getElementById("slideshow-page").style.display = "block";
-    document.getElementById("slideshow-img").src = "foto1.jpg";
-    fotoAtual = 1;
-}
-
-function fecharSlideshow(){
-    document.getElementById("slideshow-page").style.display = "none";
-}
-
-function mudarFoto(direcao){
-    fotoAtual += direcao;
-    if(fotoAtual < 1) fotoAtual = totalFotos;
-    if(fotoAtual > totalFotos) fotoAtual = 1;
-    document.getElementById("slideshow-img").src = "foto" + fotoAtual + ".jpg";
 }
 
 function chuvaCoracoes(){
